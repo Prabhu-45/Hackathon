@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drones - DefenseHack 2025</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark military-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shield-alt me-2"></i>
+                DefenseHack 2025 – Drone Command Center
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="drones.html">
+                            <i class="fas fa-drone me-1"></i>Drones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="alerts.html">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Alerts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="soldiers.html">
+                            <i class="fas fa-user-shield me-1"></i>Soldiers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html">
+                            <i class="fas fa-cog me-1"></i>Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid main-content">
+        <!-- Drone Fleet Overview -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card military-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-drone me-2"></i>Drone Fleet Management
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-drone text-success"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 id="activeDrones">8</h3>
+                                        <p>Active Drones</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-battery-three-quarters text-warning"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 id="avgBattery">67%</h3>
+                                        <p>Avg Battery</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-map-marker-alt text-info"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 id="missions">23</h3>
+                                        <p>Active Missions</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-exclamation-triangle text-danger"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3 id="alerts">5</h3>
+                                        <p>Threats Detected</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drone List -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card military-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-list me-2"></i>Drone Status
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Drone ID</th>
+                                        <th>Status</th>
+                                        <th>Battery</th>
+                                        <th>Location</th>
+                                        <th>Mission</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="droneTableBody">
+                                    <!-- Drone data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drone Controls -->
+            <div class="col-lg-4">
+                <div class="card military-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-gamepad me-2"></i>Drone Controls
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="drone-controls">
+                            <div class="control-group mb-3">
+                                <label class="form-label">Select Drone</label>
+                                <select class="form-select military-select" id="droneSelect">
+                                    <option value="">Choose a drone...</option>
+                                </select>
+                            </div>
+                            
+                            <div class="control-group mb-3">
+                                <label class="form-label">Mission Type</label>
+                                <select class="form-select military-select" id="missionType">
+                                    <option value="patrol">Patrol</option>
+                                    <option value="surveillance">Surveillance</option>
+                                    <option value="search">Search & Rescue</option>
+                                    <option value="threat">Threat Assessment</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group mb-3">
+                                <label class="form-label">Target Coordinates</label>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control military-input" placeholder="Lat" id="targetLat">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control military-input" placeholder="Lng" id="targetLng">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="control-buttons">
+                                <button class="btn btn-success military-btn" onclick="launchDrone()">
+                                    <i class="fas fa-play me-1"></i>Launch
+                                </button>
+                                <button class="btn btn-warning military-btn" onclick="returnDrone()">
+                                    <i class="fas fa-undo me-1"></i>Return
+                                </button>
+                                <button class="btn btn-danger military-btn" onclick="emergencyLand()">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>Emergency
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Log -->
+                <div class="card military-card mt-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-clipboard-list me-2"></i>Mission Log
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mission-log" id="missionLog">
+                            <!-- Mission log entries will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-item">
+                        <i class="fas fa-lock text-success me-2"></i>
+                        <span>Communication: Secure (AES-256)</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-item">
+                        <i class="fas fa-clock text-info me-2"></i>
+                        <span>System Time: <span id="systemTime"></span></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-item">
+                        <i class="fas fa-id-card text-warning me-2"></i>
+                        <span>Mission ID: DEF-OPS-2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script src="drones.js"></script>
+</body>
+</html>
